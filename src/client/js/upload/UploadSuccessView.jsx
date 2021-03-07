@@ -12,7 +12,7 @@ const UploadSuccessView =
 
 		if ( downloadKey !== null )
 		{
-			downloadLink = `/dl/${downloadKey}`;
+			downloadLink = `/download/${downloadKey}`;
 		}
 
 		if ( deleteKey !== null && downloadKey !== null )

@@ -9,7 +9,7 @@ const createFileEntry = require ('./database/models/File/create.js');
 const deleteFileEntry = require ('./database/models/File/delete.js');
 
 
-app.get ('/dl/:key', ( req, res ) =>
+app.get ('/download/:key', ( req, res ) =>
 {
 	getFileByKey (req.params.key).then (file =>
 	{
@@ -64,7 +64,7 @@ app.get ('/recent', ( req, res ) =>
 		{
 			const { key, name, createdAt } = files[i];
 
-			fileData.push ({ key, name, createdAt });
+			fileData.push ({ downloadKey: key, name, createdAt });
 		}
 
 		res.status (200).send (fileData);
