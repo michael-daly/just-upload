@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime.js';
 import m from 'mithril';
 
 import AppView from '~/app/AppView.jsx';
+import AppModel from '~/app/AppModel.js';
 
 
 m.route.prefix = '';
@@ -11,9 +12,10 @@ m.route (document.getElementById ('app-root'), '/',
 {
 	'/':
 	{
-		view ()
+		onmatch ()
 		{
-			return <AppView view='upload' />;
+			AppModel.view = 'home';
+			return AppView;
 		},
 	},
 });

@@ -1,19 +1,20 @@
 import m from 'mithril';
 
+import AppModel from '~/app/AppModel.js';
 import UploadView from '~/upload/UploadView.jsx';
 
 
 const AppView =
 {
-	view ( component )
+	view ()
 	{
-		const { view } = component.attrs;
+		const { view } = AppModel;
 
 		let viewComponent = 'Unknown view';
 
 		switch ( view )
 		{
-			case 'upload':
+			case 'home':
 			{
 				viewComponent = <UploadView />;
 				break;
