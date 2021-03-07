@@ -1,10 +1,8 @@
 {
-  "name": "just-upload-client",
+  "name": "just-upload",
   "version": "0.0.1",
-  "description": "",
-  "main": "./js/main.js",
+  "description": "A simple file hosting website.",
   "scripts": {
-    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +22,14 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "mithril": "^2.0.4"
+    "body-parser": "^1.19.0",
+    "crypto-random-string": "^3.3.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "mime-types": "^2.1.29",
+    "mithril": "^2.0.4",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0"
   }
 }

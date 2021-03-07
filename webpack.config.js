@@ -3,28 +3,34 @@ const webpack = require ('webpack');
 
 
 const MODE = 'development';
+const CLIENT_DIR = path.join (__dirname + '/src/client');
 
 
 module.exports =
 {
-	entry: './js/main.js',
+	entry: `${CLIENT_DIR}/js/main.js`,
 
 	output:
 	{
 		filename: 'bundle.js',
-		path:     path.join (__dirname + '/dist'),
+		path:     `${CLIENT_DIR}/dist`,
 	},
 
 	mode: MODE,
+
+	watchOptions:
+	{
+		ignored: ['**/node_modules', '**/src/server'],
+	},
 
 	module:
 	{
 		rules:
 		[
 			{
-				test: /\.jsx?$/,
+				test:    /\.jsx?$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
+				loader:  'babel-loader',
 			}
 		]
 	},
@@ -33,7 +39,7 @@ module.exports =
 	{
 		alias:
 		{
-			'~': path.resolve (__dirname, './js/'),
+			'~': path.resolve (__dirname, `${CLIENT_DIR}/js/`),
 		},
 	},
 };
