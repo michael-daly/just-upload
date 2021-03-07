@@ -14,6 +14,25 @@ const File = sequelize.define ('File',
 		allowNull: false,
 	},
 
+	data:
+	{
+		type: DataTypes.BLOB ('long'),
+		allowNull: false,
+	},
+
+	mimetype:
+	{
+		type: DataTypes.STRING (127),
+		defaultValue: null,
+		allowNull: true,
+	},
+
+	name:
+	{
+		type: DataTypes.STRING (255),
+		allowNull: false,
+	},
+
 	key:
 	{
 		type: DataTypes.STRING (8),
@@ -39,19 +58,6 @@ const File = sequelize.define ('File',
 	{
 		type: DataTypes.BOOLEAN,
 		defaultValue: false,
-		allowNull: false,
-	},
-
-	mimetype:
-	{
-		type: DataTypes.STRING (127),
-		defaultValue: null,
-		allowNull: true,
-	},
-
-	data:
-	{
-		type: DataTypes.BLOB ('long'),
 		allowNull: false,
 	},
 },

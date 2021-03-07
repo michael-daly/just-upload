@@ -19,9 +19,12 @@ app.get ('/dl/:key', ( req, res ) =>
 		}
 		else
 		{
-			const { data, mimetype } = file.dataValues;
+			const { data, mimetype, name } = file.dataValues;
 
-			res.status (200).type (mimetype).send (data);
+			res.status (200)
+				.type (mimetype)
+				.set ('Content-Disposition', `attachment; filename="${name}"`)
+				.send (data);
 		}
 	})
 	.catch (error =>
@@ -104,7 +107,7 @@ app.post ('/upload', ( req, res ) =>
 		return res.status (400).send ('Error parsing JSON data');
 	}
 
-	const { data, mimetype } = files[keys[0]];
+	const { data, mimetype, name } = files[keys[0]];
 
 	const properties =
 	{
@@ -112,9 +115,10 @@ app.post ('/upload', ( req, res ) =>
 		hasDeleteKey: !!options.hasDeleteKey,
 		showInRecentFiles: !!options.showInRecentFiles,
 
-		mimetype,
 		data,
-	}
+		mimetype,
+		name,
+	};
 
 	createFileEntry (properties).then (file =>
 	{
@@ -124,9 +128,9 @@ app.post ('/upload', ( req, res ) =>
 		}
 		else
 		{
-			const { key, deleteKey } = file.dataValues;
+			const { key, deleteKey = null } = file.dataValues;
 
-			res.status (200).send ({ key, deleteKey });
+			res.status (200).send ({ downloadKey: key, deleteKey });
 		}
 	})
 	.catch (error =>

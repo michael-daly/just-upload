@@ -7,15 +7,16 @@ const createFileEntry = async properties =>
 {
 	const
 	{
-		uploaderIP = null,
-		mimetype = null,
 		data = null,
+		mimetype = null,
+		name = null,
+		uploaderIP = null,
 		hasDeleteKey,
 		showInRecentFiles,
 	}
 	= properties;
 
-	if ( uploaderIP === null || data === null )
+	if ( data === null || mimetype === null || name === null || uploaderIP === null )
 	{
 		return null;
 	}
@@ -23,11 +24,7 @@ const createFileEntry = async properties =>
 	const entryProps =
 	{
 		key: randomString ({ length: 8, type: 'alphanumeric' }),
-
-		uploaderIP,
-		mimetype,
-		data,
-		showInRecentFiles,
+		...properties,
 	};
 
 	if ( hasDeleteKey )
