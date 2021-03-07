@@ -33,6 +33,7 @@ class UploadView
 			case 'uploadSuccess':
 			{
 				component = <UploadSuccessView
+					model={model}
 					downloadKey={model.downloadKey}
 					deleteKey={model.deleteKey}
 				/>;
