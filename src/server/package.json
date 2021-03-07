@@ -1,0 +1,22 @@
+{
+  "name": "just-upload-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto-random-string": "^3.3.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "mime-types": "^2.1.29",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0"
+  }
+}
