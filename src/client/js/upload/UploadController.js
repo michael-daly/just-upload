@@ -60,15 +60,19 @@ class UploadController
 
 		axios.post ('/upload', body).then (response =>
 		{
-			model.error = 'File uploaded successfully';
+			const { data } = response;
+
 			model.state = 'success';
+			model.subview = 'uploadSuccess';
+			model.downloadKey = data.downloadKey;
+			model.deleteKey = data.deleteKey;
 		})
 		.catch (error =>
 		{
 			console.dir (error);
 
-			model.error = error.message;
 			model.state = 'error';
+			model.error = error.message;
 		})
 		.finally (() =>
 		{

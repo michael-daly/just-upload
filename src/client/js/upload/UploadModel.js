@@ -35,6 +35,8 @@ class UploadModel
 		this.state = 'ready';
 		this.error = '';
 		this.subview = 'fileUpload';
+		this.downloadKey = '';
+		this.deleteKey = '';
 	}
 
 	setOption ( key, value )

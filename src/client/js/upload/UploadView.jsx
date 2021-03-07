@@ -2,7 +2,9 @@ import m from 'mithril';
 
 import UploadModel from '~/upload/UploadModel.js';
 import UploadController from '~/upload/UploadController.js';
+
 import FileUploadView from '~/upload/FileUploadView.jsx';
+import UploadSuccessView from '~/upload/UploadSuccessView.jsx';
 
 
 class UploadView
@@ -25,6 +27,16 @@ class UploadView
 			case 'fileUpload':
 			{
 				component = <FileUploadView model={model} controller={controller} />;
+				break;
+			}
+
+			case 'uploadSuccess':
+			{
+				component = <UploadSuccessView
+					downloadKey={model.downloadKey}
+					deleteKey={model.deleteKey}
+				/>;
+
 				break;
 			}
 
