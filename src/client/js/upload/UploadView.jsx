@@ -2,7 +2,7 @@ import m from 'mithril';
 
 import UploadModel from '~/upload/UploadModel.js';
 import UploadController from '~/upload/UploadController.js';
-import Checkbox from '~/Checkbox.jsx';
+import FileUploadView from '~/upload/FileUploadView.jsx';
 
 
 class UploadView
@@ -16,48 +16,26 @@ class UploadView
 	view ()
 	{
 		const { model, controller } = this;
+		const { subview } = model;
 
-		const options = [];
-		const { uploadOptions } = UploadModel;
+		let component;
 
-		for ( let key in uploadOptions )
+		switch ( subview )
 		{
-			options.push (
-				<Checkbox
-					label={uploadOptions[key].label}
-					name={key}
-					value={model.getOption (key)}
-					onchange={controller.onOptionChanged}
-				/>
-			);
+			case 'fileUpload':
+			{
+				component = <FileUploadView model={model} controller={controller} />;
+				break;
+			}
+
+			default:
+			{
+				component = `Unknown subview \`${subview}\``;
+				break;
+			}
 		}
 
-		const disableButton = model.file === null ||
-		                      model.state === 'uploading' ||
-		                      model.state === 'error';
-
-		return (
-			<div>
-				<input
-					type='file'
-					oninput={controller.onFileInput}
-					onchange={controller.onFileChanged}
-				/>
-
-				{options}
-
-				<input
-					type='button'
-					onclick={controller.onClickUpload}
-					value='Upload'
-					disabled={disableButton}
-				/>
-
-				<div>
-					<strong>{model.error}</strong>
-				</div>
-			</div>
-		);
+		return component;
 	}
 }
 

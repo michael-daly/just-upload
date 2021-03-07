@@ -34,6 +34,7 @@ class UploadModel
 		this.options = options;
 		this.state = 'ready';
 		this.error = '';
+		this.subview = 'fileUpload';
 	}
 
 	setOption ( key, value )
