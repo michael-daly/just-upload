@@ -62,9 +62,9 @@ app.get ('/recent', ( req, res ) =>
 
 		for ( let i = 0; i < length; i++ )
 		{
-			const { key, createdAt } = files[i];
+			const { key, name, createdAt } = files[i];
 
-			fileData.push ({ key, createdAt });
+			fileData.push ({ key, name, createdAt });
 		}
 
 		res.status (200).send (fileData);

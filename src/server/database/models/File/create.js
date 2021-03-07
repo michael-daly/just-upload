@@ -12,7 +12,6 @@ const createFileEntry = async properties =>
 		name = null,
 		uploaderIP = null,
 		hasDeleteKey,
-		showInRecentFiles,
 	}
 	= properties;
 
