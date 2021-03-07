@@ -14,7 +14,7 @@ m.route (document.getElementById ('app-root'), '/',
 	{
 		onmatch ()
 		{
-			AppModel.view = 'home';
+			AppModel.subview = 'home';
 			return AppView;
 		},
 	},

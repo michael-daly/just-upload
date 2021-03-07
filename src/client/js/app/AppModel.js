@@ -1,6 +1,6 @@
 const AppModel =
 {
-	view: 'home',
+	subview: 'home',
 };
 
 

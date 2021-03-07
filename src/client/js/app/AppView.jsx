@@ -8,11 +8,11 @@ const AppView =
 {
 	view ()
 	{
-		const { view } = AppModel;
+		const { subview } = AppModel;
 
-		let viewComponent = 'Unknown view';
+		let viewComponent;
 
-		switch ( view )
+		switch ( subview )
 		{
 			case 'home':
 			{
@@ -22,6 +22,7 @@ const AppView =
 
 			default:
 			{
+				`Unknown subview \`${subview}\``;
 				break;
 			}
 		}
