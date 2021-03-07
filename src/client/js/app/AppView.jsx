@@ -2,6 +2,7 @@ import m from 'mithril';
 
 import AppModel from '~/app/AppModel.js';
 import UploadView from '~/upload/UploadView.jsx';
+import RecentFilesView from '~/recentFiles/RecentFilesView.jsx';
 
 
 const AppView =
@@ -16,18 +17,14 @@ const AppView =
 		{
 			case 'home':
 			{
-				viewComponent = <UploadView />;
-				break;
+				return <div><UploadView /> <RecentFilesView /></div>;
 			}
 
 			default:
 			{
-				`Unknown subview \`${subview}\``;
-				break;
+				return `Unknown subview \`${subview}\``;
 			}
 		}
-
-		return viewComponent;
 	},
 };
 
