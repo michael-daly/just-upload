@@ -11,6 +11,8 @@ const FileUploadView =
 		const { model, controller } = component.attrs;
 
 		const options = [];
+		const disableControls = model.state === 'loading' || model.state === 'uploading';
+
 		const { uploadOptions } = UploadModel;
 
 		for ( let key in uploadOptions )
@@ -21,13 +23,10 @@ const FileUploadView =
 					name={key}
 					value={model.getOption (key)}
 					onchange={controller.onOptionChanged}
+					disabled={disableControls}
 				/>
 			);
 		}
-
-		const disableButton = model.file === null ||
-		                      model.state === 'uploading' ||
-		                      model.state === 'error';
 
 		return (
 			<div>
@@ -35,15 +34,16 @@ const FileUploadView =
 					type='file'
 					oninput={controller.onFileInput}
 					onchange={controller.onFileChanged}
+					disabled={disableControls}
 				/>
 
 				{options}
 
 				<input
 					type='button'
-					onclick={controller.onClickUpload}
 					value='Upload'
-					disabled={disableButton}
+					onclick={controller.onClickUpload}
+					disabled={model.file === null || model.state !== 'loaded'}
 				/>
 
 				<div>

@@ -5,9 +5,15 @@ const Checkbox =
 {
 	view ({ attrs = {} })
 	{
-		const { value, name, label = null, onchange = () => {} } = attrs;
+		const { value, name, label = null, onchange = () => {}, disabled = false } = attrs;
 
-		const input = <input type='checkbox' name={name} onchange={onchange} checked={value} />;
+		const input = <input
+			type='checkbox'
+			name={name}
+			checked={value}
+			onchange={onchange}
+			disabled={disabled}
+		/>;
 
 		if ( label !== null )
 		{
