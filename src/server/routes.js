@@ -107,7 +107,12 @@ app.post ('/upload', ( req, res ) =>
 		return res.status (400).send ('Error parsing JSON data');
 	}
 
-	const { data, mimetype, name } = files[keys[0]];
+	const { data, mimetype, name, size } = files[keys[0]];
+
+	if ( size <= 0 )
+	{
+		return res.status (400).send ('Cannot upload an empty file.');
+	}
 
 	const properties =
 	{
