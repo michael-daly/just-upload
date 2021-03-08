@@ -3,7 +3,10 @@ import m from 'mithril';
 import AppModel from '~/app/AppModel.js';
 
 import UploadView from '~/upload/UploadView.jsx';
+import RulesView from '~/misc/RulesView.jsx';
 import RecentFilesView from '~/misc/RecentFilesView.jsx';
+
+import Navbar from '~/misc/Navbar.jsx';
 
 
 const AppView =
@@ -22,6 +25,12 @@ const AppView =
 				break;
 			}
 
+			case 'rules':
+			{
+				viewComponent = <RulesView />;
+				break;
+			}
+
 			default:
 			{
 				viewComponent = `Unknown subview \`${subview}\``;
@@ -29,7 +38,13 @@ const AppView =
 			}
 		}
 
-		return <div>{viewComponent} <RecentFilesView /></div>;
+		return (
+			<div>
+				<Navbar />
+				{viewComponent}
+				<RecentFilesView />
+			</div>
+		);
 	},
 };
 
