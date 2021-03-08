@@ -1,9 +1,12 @@
 import m from 'mithril';
+import filesize from 'filesize';
 
 import UploadModel from '~/upload/UploadModel.js';
 import UploadController from '~/upload/UploadController.js';
 
 import Checkbox from '~/misc/Checkbox.jsx';
+
+import { limits } from '~/cfg/common.config.js';
 
 
 const FileUploadView =
@@ -38,6 +41,10 @@ const FileUploadView =
 				/>
 
 				{options}
+
+				<p>
+					Max file size is {filesize (limits.fileSize)}
+				</p>
 
 				<input
 					type='button'

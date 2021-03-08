@@ -26,6 +26,7 @@
     "crypto-random-string": "^3.3.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "filesize": "^6.1.0",
     "mime-types": "^2.1.29",
     "mithril": "^2.0.4",
     "pg": "^8.5.1",
