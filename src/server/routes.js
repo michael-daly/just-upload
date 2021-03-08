@@ -1,7 +1,10 @@
 const path = require ('path');
+const rateLimit = require ('express-rate-limit');
+
 const app = require ('./init.js');
 
-const { limits } = require ('../../cfg/common.config.js');
+const { limits } = require ('../../cfg/server.config.js');
+const fileSizeLimit = require ('../../cfg/common.config.js').limits.fileSize;
 
 const { getFileByKey, getRecentFiles } = require ('./database/models/File/get.js');
 
@@ -9,7 +12,32 @@ const createFileEntry = require ('./database/models/File/create.js');
 const deleteFileEntry = require ('./database/models/File/delete.js');
 
 
-app.get ('/download/:key', ( req, res ) =>
+const RATE_LIMIT_MESSAGE = 'Too many requests at once! Please wait and try again.';
+
+const uploadLimit = rateLimit (
+{
+	windowMs: limits.uploadMS,
+	max: limits.uploadsPerMS,
+	message: RATE_LIMIT_MESSAGE,
+});
+
+
+const downloadLimit = rateLimit (
+{
+	windowMs: limits.downloadMS,
+	max: limits.downloadsPerMS,
+	message: RATE_LIMIT_MESSAGE,
+});
+
+const fileListLimit = rateLimit (
+{
+	windowMs: limits.fileListMS,
+	max: limits.fileListPerMS,
+	message: RATE_LIMIT_MESSAGE,
+});
+
+
+app.get ('/download/:key', downloadLimit, ( req, res ) =>
 {
 	getFileByKey (req.params.key).then (file =>
 	{
@@ -52,9 +80,9 @@ app.get ('/delete/:key', ( req, res ) =>
 	}
 });
 
-app.get ('/recent', ( req, res ) =>
+app.get ('/recent', fileListLimit, ( req, res ) =>
 {
-	getRecentFiles (limits.fileList).then (files =>
+	getRecentFiles (fileSizeLimit.fileListPage).then (files =>
 	{
 		const fileData = [];
 
@@ -80,7 +108,7 @@ app.get ('/*', ( req, res ) =>
 	res.sendFile ('index.html', { root: path.join (__dirname, '../client') });
 });
 
-app.post ('/upload', ( req, res ) =>
+app.post ('/upload', uploadLimit, ( req, res ) =>
 {
 	const { files = {} } = req;
 
