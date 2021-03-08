@@ -2,7 +2,7 @@ const path    = require ('path');
 const webpack = require ('webpack');
 
 
-const MODE = 'development';
+const MODE       = 'development';
 const CLIENT_DIR = path.join (__dirname + '/src/client');
 
 
@@ -39,7 +39,8 @@ module.exports =
 	{
 		alias:
 		{
-			'~': path.resolve (__dirname, `${CLIENT_DIR}/js/`),
+			'~/config.js': path.resolve (__dirname, `${CLIENT_DIR}/config.js`),
+			'~':           path.resolve (__dirname, `${CLIENT_DIR}/js/`),
 		},
 	},
 };

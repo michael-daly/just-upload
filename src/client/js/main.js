@@ -18,4 +18,13 @@ m.route (document.getElementById ('app-root'), '/',
 			return AppView;
 		},
 	},
+
+	'/rules':
+	{
+		onmatch ()
+		{
+			AppModel.subview = 'rules';
+			return AppView;
+		},
+	},
 });
