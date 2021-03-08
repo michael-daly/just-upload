@@ -4,7 +4,7 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const fileUpload = require ('express-fileupload');
 
-const { limits } = require ('./config.js');
+const { limits } = require ('../../cfg/common.config.js');
 
 const app = express ();
 

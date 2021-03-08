@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-import config from '~/config.js';
+import config from '~/cfg/client.config.js';
 
 
 const RulesView =

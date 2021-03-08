@@ -1,4 +1,4 @@
-const config = require ('./config.js');
+const config = require ('../../cfg/server.config.js');
 const app = require ('./init.js');
 
 require ('./routes.js');

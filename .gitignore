@@ -75,7 +75,8 @@ typings/
 dist/
 
 # App configuration files
-config.js
+cfg/*.*
+!cfg/*.example.*
 
 # Development scripts
 dev/

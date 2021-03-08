@@ -1,7 +1,7 @@
 const path = require ('path');
 const app = require ('./init.js');
 
-const { limits } = require ('./config.js');
+const { limits } = require ('../../cfg/common.config.js');
 
 const { getFileByKey, getRecentFiles } = require ('./database/models/File/get.js');
 
