@@ -18,19 +18,18 @@ const AppView =
 		{
 			case 'home':
 			{
-				return (
-					<div>
-						<UploadView />
-						<RecentFilesView />
-					</div>
-				);
+				viewComponent = <UploadView />;
+				break;
 			}
 
 			default:
 			{
-				return `Unknown subview \`${subview}\``;
+				viewComponent = `Unknown subview \`${subview}\``;
+				break;
 			}
 		}
+
+		return <div>{viewComponent} <RecentFilesView /></div>;
 	},
 };
 
