@@ -7,35 +7,27 @@ import FileUploadView from '~/upload/FileUploadView.jsx';
 import UploadSuccessView from '~/upload/UploadSuccessView.jsx';
 
 
-class UploadView
+const UploadView =
 {
-	constructor ()
-	{
-		this.model = new UploadModel ();
-		this.controller = new UploadController (this.model, this);
-	}
-
 	view ()
 	{
-		const { model, controller } = this;
-		const { subview } = model;
+		const { subview } = UploadModel;
 
 		let component;
 
 		switch ( subview )
 		{
-			case 'fileUpload':
+			case 'upload':
 			{
-				component = <FileUploadView model={model} controller={controller} />;
+				component = <FileUploadView />;
 				break;
 			}
 
-			case 'uploadSuccess':
+			case 'success':
 			{
 				component = <UploadSuccessView
-					model={model}
-					downloadKey={model.downloadKey}
-					deleteKey={model.deleteKey}
+					downloadKey={UploadModel.downloadKey}
+					deleteKey={UploadModel.deleteKey}
 				/>;
 
 				break;
@@ -49,8 +41,8 @@ class UploadView
 		}
 
 		return component;
-	}
-}
+	},
+};
 
 
 export default UploadView;

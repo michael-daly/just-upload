@@ -1,11 +1,13 @@
 import m from 'mithril';
 
+import UploadModel from '~/upload/UploadModel.js';
+
 
 const UploadSuccessView =
 {
 	view ( component )
 	{
-		const { model, downloadKey = null, deleteKey = null } = component.attrs;
+		const { downloadKey = null, deleteKey = null } = component.attrs;
 
 		let downloadLink = '';
 		let deleteLink = '';
@@ -44,12 +46,12 @@ const UploadSuccessView =
 					<input
 						type='button'
 						value='Upload Another File'
-						onclick={() => model.subview = 'fileUpload'}
+						onclick={() => UploadModel.subview = 'upload'}
 					/>
 				</div>
 			</div>
 		);
-	}
+	},
 };
 
 

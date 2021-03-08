@@ -1,8 +1,9 @@
 import m from 'mithril';
 
 import AppModel from '~/app/AppModel.js';
+
 import UploadView from '~/upload/UploadView.jsx';
-import RecentFilesView from '~/recentFiles/RecentFilesView.jsx';
+import RecentFilesView from '~/misc/RecentFilesView.jsx';
 
 
 const AppView =
@@ -17,7 +18,12 @@ const AppView =
 		{
 			case 'home':
 			{
-				return <div><UploadView /> <RecentFilesView /></div>;
+				return (
+					<div>
+						<UploadView />
+						<RecentFilesView />
+					</div>
+				);
 			}
 
 			default:

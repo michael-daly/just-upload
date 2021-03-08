@@ -1,21 +1,12 @@
 import m from 'mithril';
 import axios from 'axios';
 
+import AppController from '~/app/AppController.js';
+import UploadModel from '~/upload/UploadModel.js';
 
-class UploadController
+
+const UploadController =
 {
-	constructor ( model, view )
-	{
-		this.model = model;
-		this.view = view;
-
-		// Pre-bind methods so they're not bound every re-render.
-		this.onFileInput = this.onFileInput.bind (this);
-		this.onFileChanged = this.onFileChanged.bind (this);
-		this.onOptionChanged = this.onOptionChanged.bind (this);
-		this.onClickUpload = this.onClickUpload.bind (this);
-	}
-
 	onOptionChanged ( event )
 	{
 		const { target } = event;
@@ -28,58 +19,58 @@ class UploadController
 			value = target.checked;
 		}
 
-		this.model.setOption (target.name, value);
-	}
+		UploadModel.setOption (target.name, value);
+	},
 
 	onFileInput ()
 	{
-		this.model.state = 'loading';
-	}
+		UploadModel.state = 'loading';
+	},
 
 	onFileChanged ( event )
 	{
-		this.model.file = event.target.files[0];
-		this.model.state = 'loaded';
-	}
+		UploadModel.file = event.target.files[0];
+		UploadModel.state = 'loaded';
+	},
 
 	onClickUpload ( event )
 	{
-		const { model } = this;
-
-		if ( model.file === null )
+		if ( UploadModel.file === null )
 		{
 			return;
 		}
 
-		this.model.state = 'uploading';
+		UploadModel.state = 'uploading';
 
 		const body = new FormData ();
 
-		body.append ('file', model.file);
-		body.append ('options', JSON.stringify (model.options));
+		body.append ('file', UploadModel.file);
+		body.append ('options', JSON.stringify (UploadModel.options));
 
 		axios.post ('/upload', body).then (response =>
 		{
 			const { data } = response;
 
-			model.state = 'success';
-			model.subview = 'uploadSuccess';
-			model.downloadKey = data.downloadKey;
-			model.deleteKey = data.deleteKey;
+			UploadModel.state = 'success';
+			UploadModel.subview = 'success';
+			UploadModel.downloadKey = data.downloadKey;
+			UploadModel.deleteKey = data.deleteKey;
+
+			AppController.getRecentFiles ();
 		})
 		.catch (error =>
 		{
 			console.dir (error);
 
-			model.state = 'error';
-			model.error = error.message;
+			UploadModel.state = 'error';
+			UploadModel.error = error.message;
 		})
 		.finally (() =>
 		{
 			m.redraw ();
 		});
-	}
-}
+	},
+};
 
 
 export default UploadController;

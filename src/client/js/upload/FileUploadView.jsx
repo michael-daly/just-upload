@@ -1,17 +1,17 @@
 import m from 'mithril';
 
 import UploadModel from '~/upload/UploadModel.js';
-import Checkbox from '~/Checkbox.jsx';
+import UploadController from '~/upload/UploadController.js';
+
+import Checkbox from '~/misc/Checkbox.jsx';
 
 
 const FileUploadView =
 {
-	view ( component )
+	view ()
 	{
-		const { model, controller } = component.attrs;
-
 		const options = [];
-		const disableControls = model.state === 'loading' || model.state === 'uploading';
+		const disableControls = UploadModel.state === 'loading' || UploadModel.state === 'uploading';
 
 		const { uploadOptions } = UploadModel;
 
@@ -21,8 +21,8 @@ const FileUploadView =
 				<Checkbox
 					label={uploadOptions[key].label}
 					name={key}
-					value={model.getOption (key)}
-					onchange={controller.onOptionChanged}
+					value={UploadModel.getOption (key)}
+					onchange={UploadController.onOptionChanged}
 					disabled={disableControls}
 				/>
 			);
@@ -32,8 +32,8 @@ const FileUploadView =
 			<div>
 				<input
 					type='file'
-					oninput={controller.onFileInput}
-					onchange={controller.onFileChanged}
+					oninput={UploadController.onFileInput}
+					onchange={UploadController.onFileChanged}
 					disabled={disableControls}
 				/>
 
@@ -42,12 +42,12 @@ const FileUploadView =
 				<input
 					type='button'
 					value='Upload'
-					onclick={controller.onClickUpload}
-					disabled={model.file === null || model.state !== 'loaded'}
+					onclick={UploadController.onClickUpload}
+					disabled={UploadModel.file === null || UploadModel.state !== 'loaded'}
 				/>
 
 				<div>
-					<strong>{model.error}</strong>
+					<strong>{UploadModel.error}</strong>
 				</div>
 			</div>
 		);
