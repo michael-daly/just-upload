@@ -41,8 +41,22 @@ const AppView =
 		return (
 			<div>
 				<Navbar />
-				{viewComponent}
-				<RecentFilesView />
+
+				<div class='columns is-centered'>
+					<div class='column is-two-fifths has-text-centered'>
+						<div class='box box-primary'>
+							{viewComponent}
+						</div>
+					</div>
+				</div>
+
+				<div class='columns is-centered'>
+					<div class='column is-one-third has-text-centered'>
+						<div class='box'>
+							<RecentFilesView />
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	},

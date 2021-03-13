@@ -47,8 +47,9 @@ const FileUploadView =
 				</p>
 
 				<input
+					class='button is-primary'
 					type='button'
-					value='Upload'
+					value='Upload File'
 					onclick={UploadController.onClickUpload}
 					disabled={UploadModel.file === null || UploadModel.state !== 'loaded'}
 				/>

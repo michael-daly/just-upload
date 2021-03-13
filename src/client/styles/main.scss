@@ -3,17 +3,36 @@
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
 
+
 /* Set variables */
 
 $palenight-bg: #292D3E;
-$palenight-fg: #A6ACCD;
+
 $palenight-text: #B2CCD6;
+
+$palenight-fg-primary: #485072;
+$palenight-fg-secondary: #3B415C;
+$palenight-fg-text: #959DBB;
+
+
+/* Override Bulma variables */
 
 $primary: #4E87F7;
 
 $body-background-color: $palenight-bg;
 $body-color: $palenight-text;
 $background: $palenight-bg;
+
+$box-background-color: $palenight-fg-secondary;
+$box-color: $palenight-fg-text;
+
+
+/* CSS Styles */
+
+.box.box-primary
+{
+	background-color: $palenight-fg-primary;
+}
 
 
 @import '~bulma/bulma';  // This must be last or the variable changes won't work.
