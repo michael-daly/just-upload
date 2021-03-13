@@ -2,6 +2,7 @@
 
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
+@import '~bulma/sass/base/animations';
 
 
 /* Set variables */
@@ -32,6 +33,21 @@ $box-color: $palenight-fg-text;
 .box.box-primary
 {
 	background-color: $palenight-fg-primary;
+}
+
+.loading-spinner
+{
+	-webkit-animation: spinAround 500ms infinite linear;
+	        animation: spinAround 500ms infinite linear;
+	border: 2px solid #dbdbdb;
+	border-radius: 290486px;
+	border-right-color: transparent;
+	border-top-color: transparent;
+	content: '';
+	display: block;
+	height: 1em;
+	position: relative;
+	width: 1em;
 }
 
 
