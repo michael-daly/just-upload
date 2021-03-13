@@ -1,18 +1,19 @@
-$foundation-palette:
-(
-	primary: #1779ba,
-	secondary: #767676,
-	success: #3adb76,
-	warning: #ffae00,
-	alert: #cc4b37,
-);
+@charset 'utf-8';
 
-$valhalla: #292D3E;
-$spindle: #B2CCD6;
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
 
-$body-background: $valhalla;
-$body-font-color: $spindle;
+/* Set variables */
+
+$palenight-bg: #292D3E;
+$palenight-fg: #A6ACCD;
+$palenight-text: #B2CCD6;
+
+$primary: #4E87F7;
+
+$body-background-color: $palenight-bg;
+$body-color: $palenight-text;
+$background: $palenight-bg;
 
 
-@import '~foundation-sites/scss/foundation.scss';
-@include foundation-everything;
+@import '~bulma/bulma';  // This must be last or the variable changes won't work.

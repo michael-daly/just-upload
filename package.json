@@ -29,12 +29,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "bulma": "^0.9.2",
     "crypto-random-string": "^3.3.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-rate-limit": "^5.2.6",
     "filesize": "^6.1.0",
-    "foundation-sites": "^6.6.3",
     "mime-types": "^2.1.29",
     "mithril": "^2.0.4",
     "pg": "^8.5.1",
