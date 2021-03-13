@@ -2,6 +2,8 @@ import 'regenerator-runtime/runtime.js';
 
 import m from 'mithril';
 
+import '~/styles/main.scss';
+
 import AppView from '~/app/AppView.jsx';
 import AppModel from '~/app/AppModel.js';
 

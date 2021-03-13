@@ -1,6 +1,8 @@
 const path    = require ('path');
 const webpack = require ('webpack');
 
+const MiniCssExtractPlugin = require ('mini-css-extract-plugin');
+
 
 const MODE = 'development';
 
@@ -25,6 +27,14 @@ module.exports =
 		ignored: ['**/node_modules', '**/src/server'],
 	},
 
+	plugins:
+	[
+		new MiniCssExtractPlugin (
+		{
+			filename: 'styles.css',
+		}),
+	],
+
 	module:
 	{
 		rules:
@@ -33,16 +43,35 @@ module.exports =
 				test:    /\.jsx?$/,
 				exclude: /node_modules/,
 				loader:  'babel-loader',
-			}
-		]
+			},
+			{
+				test: /\.s[ca]ss$/,
+				exclude: /node_modules/,
+				use:
+				[
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+					},
+					{
+						loader: 'sass-loader',
+						options:
+						{
+							sourceMap: true,
+						},
+					},
+				],
+			},
+		],
 	},
 
 	resolve:
 	{
 		alias:
 		{
-			'~/cfg': path.resolve (__dirname, `${CONFIG_DIR}/`),
-			'~':     path.resolve (__dirname, `${CLIENT_DIR}/js/`),
+			'~/cfg':    path.resolve (__dirname, `${CONFIG_DIR}/`),
+			'~/styles': path.resolve (__dirname, `${CLIENT_DIR}/styles/`),
+			'~':        path.resolve (__dirname, `${CLIENT_DIR}/js/`),
 		},
 	},
 };
