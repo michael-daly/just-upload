@@ -12,5 +12,5 @@ require ('./database/init.js').then (() =>
 })
 .catch (error =>
 {
-	console.error (error);
+	console.error ('Could not connect to the database:', error);
 });
