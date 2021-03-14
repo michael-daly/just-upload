@@ -27,5 +27,10 @@
 	width: 1em;
 }
 
+.file-list-file
+{
+	width: 50%;
+}
+
 
 @import '~bulma/bulma';  // This must be last or the variable changes won't work.

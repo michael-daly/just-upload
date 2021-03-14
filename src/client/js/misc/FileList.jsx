@@ -3,18 +3,40 @@ import m from 'mithril';
 
 const FileList =
 {
+	createItem ( file )
+	{
+		return (
+			<td class='file-list-file'>
+				<a href={`/download/${file.downloadKey}`}>
+					{file.name}
+				</a>
+			</td>
+		);
+	},
+
 	view ( component )
 	{
 		const { files = [] } = component.attrs;
+		const { length } = files;
+
+		const rows = [];
+
+		for ( let i = 0; i < length; i += 2 )
+		{
+			const row = [this.createItem (files[i])];
+
+			if ( i < length - 1 )
+			{
+				row.push (this.createItem (files[i + 1]));
+			}
+
+			rows.push (<tr>{row}</tr>);
+		}
 
 		return (
-			<ul>
-			{
-				files.length <= 0 ? 'No files to display.' : files.map (( data, index ) => (
-					<li><a href={`/download/${data.downloadKey}`}>{data.name}</a></li>
-				))
-			}
-			</ul>
+			<table class='table'>
+				{rows.length <= 0 ? 'No files to display.' : rows}
+			</table>
 		);
 	}
 };

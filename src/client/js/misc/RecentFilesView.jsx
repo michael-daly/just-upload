@@ -19,8 +19,18 @@ const RecentFilesView =
 
 		return (
 			<div>
-				<h2>Recently Upload Files</h2>
-				{showLoading ? 'Loading...' : <FileList files={AppModel.files} />}
+				<h4 class='title is-4'>Recently Upload Files</h4>
+
+				<div class='box is-centered has-text-centered'>
+					<div class='block columns is-centered'>
+						<div class='column is-narrow'>
+						{
+							showLoading ? <div class='loading-spinner' /> :
+								<FileList files={AppModel.files} />
+						}
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	},
