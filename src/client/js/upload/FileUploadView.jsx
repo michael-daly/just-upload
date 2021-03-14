@@ -69,10 +69,6 @@ const FileUploadView =
 				}
 				</div>
 
-				<div class='columns is-centered'>
-					<div class='column is-narrow'>{options}</div>
-				</div>
-
 				{
 					UploadModel.error === ''
 						? ''
@@ -86,6 +82,10 @@ const FileUploadView =
 							</div>
 						</div>
 				}
+
+				<div class='columns is-centered'>
+					<div class='column is-narrow'>{options}</div>
+				</div>
 
 				<div class='columns is-centered'>
 					<div class='column is-narrow'>
