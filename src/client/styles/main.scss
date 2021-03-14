@@ -32,5 +32,10 @@
 	width: 50%;
 }
 
+.button-transition
+{
+	transition: background-color 300ms;
+}
+
 
 @import '~bulma/bulma';  // This must be last or the variable changes won't work.
