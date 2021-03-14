@@ -4,8 +4,6 @@ import filesize from 'filesize';
 import UploadModel from '~/upload/UploadModel.js';
 import UploadController from '~/upload/UploadController.js';
 
-import Checkbox from '~/misc/Checkbox.jsx';
-
 import { limits } from '~/cfg/common.config.js';
 
 
@@ -14,47 +12,77 @@ const FileUploadView =
 	view ()
 	{
 		const options = [];
-		const disableControls = UploadModel.state === 'loading' || UploadModel.state === 'uploading';
+		const disableControls = UploadModel.state === 'loading' ||
+		                        UploadModel.state === 'uploading';
 
-		const { uploadOptions } = UploadModel;
+		const { uploadOptions, file } = UploadModel;
 
 		for ( let key in uploadOptions )
 		{
+			const { label } = uploadOptions[key];
+
 			options.push (
-				<Checkbox
-					label={uploadOptions[key].label}
-					name={key}
-					value={UploadModel.getOption (key)}
-					onchange={UploadController.onOptionChanged}
-					disabled={disableControls}
-				/>
+				<div class='control'>
+					<label class='checkbox'>
+						<input
+							type='checkbox'
+							name={key}
+							checked={UploadModel.getOption (key)}
+							onchange={UploadController.onOptionChanged}
+							disabled={disableControls}
+						/>
+
+						{' ' + label}
+					</label>
+				</div>
 			);
 		}
 
 		return (
 			<div>
-				<input
-					type='file'
-					oninput={UploadController.onFileInput}
-					onchange={UploadController.onFileChanged}
-					disabled={disableControls}
-				/>
+				<div class='block'>
+					<div class='columns is-centered'>
+						<div class='file column is-narrow'>
+							<div class='mb-2'>
+								<small>{file === null ? 'No file selected.' : file.name}</small>
+							</div>
 
-				{options}
+							<label class='file-label'>
+								<input
+									class='file-input'
+									type='file'
+									oninput={UploadController.onFileInput}
+									onchange={UploadController.onFileChanged}
+									disabled={disableControls}
+								/>
 
-				<p>
-					Max file size is {filesize (limits.fileSize)}
-				</p>
+								<span class='file-cta'>Choose File</span>
+							</label>
+						</div>
+					</div>
 
-				<input
-					class='button is-primary'
-					type='button'
-					value='Upload File'
-					onclick={UploadController.onClickUpload}
-					disabled={UploadModel.file === null || UploadModel.state !== 'loaded'}
-				/>
+					<div class='field is-horizontal'>
+						<div class='field-body'>
+							<div class='field'>
+								{options}
+							</div>
+						</div>
+					</div>
+
+					<small>Max file size is {filesize (limits.fileSize)}</small>
+				</div>
 
 				<div>
+					<input
+						class='button is-primary'
+						type='button'
+						value='Upload'
+						onclick={UploadController.onClickUpload}
+						disabled={file === null || UploadModel.state !== 'loaded'}
+					/>
+				</div>
+
+				<div class='block'>
 					<strong>{UploadModel.error}</strong>
 				</div>
 			</div>

@@ -13,18 +13,21 @@ const UploadView =
 	{
 		const { subview } = UploadModel;
 
+		let title;
 		let component;
 
 		switch ( subview )
 		{
 			case 'upload':
 			{
+				title = 'Upload a File';
 				component = <FileUploadView />;
 				break;
 			}
 
 			case 'success':
 			{
+				title = 'Upload Successful';
 				component = <UploadSuccessView
 					downloadKey={UploadModel.downloadKey}
 					deleteKey={UploadModel.deleteKey}
@@ -35,12 +38,18 @@ const UploadView =
 
 			default:
 			{
+				title = 'Oops!';
 				component = `Unknown subview \`${subview}\``;
 				break;
 			}
 		}
 
-		return component;
+		return (
+			<div>
+				<h4 class='title is-4'>{title}</h4>
+				{component}
+			</div>
+		);
 	},
 };
 
