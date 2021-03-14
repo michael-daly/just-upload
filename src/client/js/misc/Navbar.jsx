@@ -19,7 +19,7 @@ const Navbar =
 			<nav class='navbar is-fixed-top'>
 				<div class='navbar-brand'>
 					<a class='navbar-item' onclick={this.clickUpload}>
-						<img src='./img/logo.png' width='112' height='28' />
+						<img src='./img/logo.png' />
 					</a>
 				</div>
 
