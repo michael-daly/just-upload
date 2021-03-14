@@ -52,7 +52,9 @@ const AppView =
 
 				<div class='columns is-centered'>
 					<div class='column is-one-third has-text-centered'>
-						<RecentFilesView />
+						<div class='box'>
+							<RecentFilesView />
+						</div>
 					</div>
 				</div>
 			</div>
