@@ -5,6 +5,11 @@
 @import '~bulma/sass/base/animations';
 
 
+/* Override Bulma variables */
+
+$body-overflow-y: auto;
+
+
 /* CSS Styles */
 
 .box.box-primary
