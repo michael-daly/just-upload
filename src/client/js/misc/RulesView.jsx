@@ -14,13 +14,20 @@ const RulesView =
 
 		for ( let i = 0; i < length; i++ )
 		{
-			ruleComponents.push (<li>{rules[i]}</li>);
+			ruleComponents.push (<li><strong>{`${i + 1}.`}</strong> {rules[i]}</li>);
 		}
 
 		return (
-			<div>
-				<h2>Rules</h2>
-				<ol>{ruleComponents}</ol>
+			<div class='block p-2 pb-4'>
+				<h4 class='title is-4 has-text-centered'>Rules</h4>
+
+				<div class='columns is-centered'>
+					<div class='column is-narrow'>
+						<ol class='rules-list'>
+							{ruleComponents}
+						</ol>
+					</div>
+				</div>
 			</div>
 		);
 	},
