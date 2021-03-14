@@ -42,7 +42,7 @@ app.get ('/download/:key', downloadLimit, ( req, res ) =>
 	{
 		if ( file === null )
 		{
-			res.sendStatus (404);
+			res.status (404).redirect ('/404');
 		}
 		else
 		{
@@ -70,7 +70,14 @@ app.get ('/delete/:key', ( req, res ) =>
 	{
 		deleteFileEntry (req.params.key, req.query.deleteKey).then (success =>
 		{
-			res.sendStatus (success ? 200 : 400);
+			if ( success )
+			{
+				res.sendStatus (200);
+			}
+			else
+			{
+				res.status (404).redirect ('/404');
+			}
 		})
 		.catch (error =>
 		{

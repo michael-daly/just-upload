@@ -5,6 +5,7 @@ import AppModel from '~/app/AppModel.js';
 import UploadView from '~/upload/UploadView.jsx';
 import RulesView from '~/misc/RulesView.jsx';
 import RecentFilesView from '~/misc/RecentFilesView.jsx';
+import NotFoundView from '~/errorPages/NotFoundView.jsx';
 
 import Navbar from '~/misc/Navbar.jsx';
 
@@ -16,6 +17,7 @@ const AppView =
 		const { subview } = AppModel;
 
 		let viewComponent;
+		let showRecentFiles = true;
 
 		switch ( subview )
 		{
@@ -28,6 +30,13 @@ const AppView =
 			case 'rules':
 			{
 				viewComponent = <RulesView />;
+				break;
+			}
+
+			case '404':
+			{
+				viewComponent = <NotFoundView />;
+				showRecentFiles = false;
 				break;
 			}
 
@@ -64,13 +73,17 @@ const AppView =
 						</div>
 					</div>
 
-					<div class='columns is-centered'>
-						<div class='column is-one-third'>
-							<div class='box'>
-								<RecentFilesView />
+					{
+						!showRecentFiles
+							? ''
+							: <div class='columns is-centered'>
+								<div class='column is-one-third'>
+									<div class='box'>
+										<RecentFilesView />
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+					}
 				</section>
 			</div>
 		);

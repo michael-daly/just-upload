@@ -29,4 +29,13 @@ m.route (document.getElementById ('app-root'), '/',
 			return AppView;
 		},
 	},
+
+	'/404':
+	{
+		onmatch ()
+		{
+			AppModel.subview = '404';
+			return AppView;
+		},
+	},
 });
