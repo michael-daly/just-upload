@@ -19,9 +19,9 @@ const RecentFilesView =
 
 		return (
 			<div>
-				<h4 class='title is-4'>Recently Upload Files</h4>
+				<h4 class='title is-4 has-text-centered'>Recently Upload Files</h4>
 
-				<div class='is-centered has-text-centered'>
+				<div class='is-centered'>
 					<div class='block columns is-centered'>
 						<div class='column is-narrow'>
 						{

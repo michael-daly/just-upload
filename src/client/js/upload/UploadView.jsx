@@ -46,7 +46,7 @@ const UploadView =
 
 		return (
 			<div>
-				<h4 class='title is-4'>{title}</h4>
+				<h4 class='title is-4 has-text-centered'>{title}</h4>
 				{component}
 			</div>
 		);

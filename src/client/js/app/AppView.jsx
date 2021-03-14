@@ -43,7 +43,7 @@ const AppView =
 				<Navbar />
 
 				<div class='columns is-centered'>
-					<div class='column is-two-fifths has-text-centered'>
+					<div class='column is-two-fifths'>
 						<div class='box box-primary'>
 							{viewComponent}
 						</div>
@@ -51,7 +51,7 @@ const AppView =
 				</div>
 
 				<div class='columns is-centered'>
-					<div class='column is-one-third has-text-centered'>
+					<div class='column is-one-third'>
 						<div class='box'>
 							<RecentFilesView />
 						</div>

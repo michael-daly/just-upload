@@ -6,7 +6,7 @@ const FileList =
 	createItem ( file )
 	{
 		return (
-			<td class='file-list-item'>
+			<td class={'file-list-item'}>
 				<a href={`/download/${file.downloadKey}`}>
 					{file.name}
 				</a>
