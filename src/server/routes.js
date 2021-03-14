@@ -4,7 +4,6 @@ const rateLimit = require ('express-rate-limit');
 const app = require ('./init.js');
 
 const { limits } = require ('../../cfg/server.config.js');
-const fileSizeLimit = require ('../../cfg/common.config.js').limits.fileSize;
 
 const { getFileByKey, getRecentFiles } = require ('./database/models/File/get.js');
 
@@ -82,7 +81,7 @@ app.get ('/delete/:key', ( req, res ) =>
 
 app.get ('/recent', fileListLimit, ( req, res ) =>
 {
-	getRecentFiles (fileSizeLimit.fileListPage).then (files =>
+	getRecentFiles (limits.fileListPage).then (files =>
 	{
 		const fileData = [];
 
