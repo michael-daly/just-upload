@@ -47,24 +47,25 @@ const FileUploadView =
 			<div>
 				<div class='columns is-centered'>
 				{
-					isLoading ? <div class='loading-spinner mt-4 mb-2' /> :
-					<div class='file column is-narrow'>
-						<div class='has-text-centered mb-2'>
-							<small>{file === null ? 'No file selected.' : file.name}</small>
+					isLoading
+						? <div class='loading-spinner mt-4 mb-2' />
+						: <div class='file column is-narrow'>
+							<div class='has-text-centered mb-2'>
+								<small>{file === null ? 'No file selected.' : file.name}</small>
+							</div>
+
+							<label class='file-label'>
+								<input
+									class='file-input'
+									type='file'
+									oninput={UploadController.onFileInput}
+									onchange={UploadController.onFileChanged}
+									disabled={disableControls}
+								/>
+
+								<span class='file-cta'>Choose File</span>
+							</label>
 						</div>
-
-						<label class='file-label'>
-							<input
-								class='file-input'
-								type='file'
-								oninput={UploadController.onFileInput}
-								onchange={UploadController.onFileChanged}
-								disabled={disableControls}
-							/>
-
-							<span class='file-cta'>Choose File</span>
-						</label>
-					</div>
 				}
 				</div>
 
@@ -73,16 +74,17 @@ const FileUploadView =
 				</div>
 
 				{
-					UploadModel.error === '' ? '' :
-					<div class='columns is-centered'>
-						<div class='column is-narrow'>
-							<div class='message is-danger'>
-								<div class='message-body p-2 pl-4 pr-4'>
-									{UploadModel.error}
+					UploadModel.error === ''
+						? ''
+						: <div class='columns is-centered'>
+							<div class='column is-narrow'>
+								<div class='message is-danger'>
+									<div class='message-body p-2 pl-4 pr-4'>
+										{UploadModel.error}
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 				}
 
 				<div class='columns is-centered'>

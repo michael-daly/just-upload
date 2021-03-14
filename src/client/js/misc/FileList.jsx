@@ -1,14 +1,26 @@
 import m from 'mithril';
 
+import stringWidth from 'string-width';
+
+
+const FILE_TRUNCATE_LEN = 30;
+
 
 const FileList =
 {
 	createItem ( file )
 	{
+		let fileName = file.name;
+
+		if ( stringWidth (fileName) >= FILE_TRUNCATE_LEN )
+		{
+			fileName = fileName.substr (0, FILE_TRUNCATE_LEN) + '\u2026';
+		}
+
 		return (
 			<td class={'file-list-item'}>
 				<a href={`/download/${file.downloadKey}`}>
-					{file.name}
+					{fileName}
 				</a>
 			</td>
 		);
@@ -34,9 +46,11 @@ const FileList =
 		}
 
 		return (
-			<table class='table'>
-				{rows.length <= 0 ? 'No files to display.' : rows}
-			</table>
+			<div class='columns is-centered'>
+				<table class='table'>
+					{rows.length <= 0 ? 'No files to display.' : rows}
+				</table>
+			</div>
 		);
 	}
 };

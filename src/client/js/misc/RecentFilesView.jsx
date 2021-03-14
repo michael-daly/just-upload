@@ -21,12 +21,17 @@ const RecentFilesView =
 			<div>
 				<h4 class='title is-4 has-text-centered'>Recently Upload Files</h4>
 
-				<div class='is-centered'>
+				<div>
 					<div class='block columns is-centered'>
-						<div class='column is-narrow'>
+						<div class='column is-full'>
 						{
-							showLoading ? <div class='loading-spinner' /> :
-								<FileList files={AppModel.files} />
+							showLoading
+								? <div class='columns is-centered'>
+									<div class='column is-narrow'>
+										<div class='loading-spinner' />
+									</div>
+								</div>
+								: <FileList files={AppModel.files} />
 						}
 						</div>
 					</div>
