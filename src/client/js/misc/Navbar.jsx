@@ -3,26 +3,38 @@ import m from 'mithril';
 
 const Navbar =
 {
-	view ({ attrs })
+	clickUpload ()
 	{
-		const { isFixed = false } = attrs;
+		m.route.set ('/');
+	},
 
-		const style = {};
+	clickRules ()
+	{
+		m.route.set ('/rules')
+	},
 
-		if ( isFixed )
-		{
-			style.position = 'fixed';
-		}
-
+	view ()
+	{
 		return (
-			<table style={style}>
-				<thead>
-					<tr>
-						<th onclick={() => m.route.set ('/')}>Upload</th> | 
-						<th onclick={() => m.route.set ('/rules')}>Rules</th>
-					</tr>
-				</thead>
-			</table>
+			<nav class='navbar is-fixed-top'>
+				<div class='navbar-brand'>
+					<a class='navbar-item' onclick={this.clickUpload}>
+						<img src='./img/logo.png' width='112' height='28' />
+					</a>
+				</div>
+
+				<div class='navbar-menu'>
+					<div class='navbar-start'>
+						<a class='navbar-item' onclick={this.clickUpload}>
+							Upload
+						</a>
+
+						<a class='navbar-item' onclick={this.clickRules}>
+							Rules
+						</a>
+					</div>
+				</div>
+			</nav>
 		);
 	},
 };
