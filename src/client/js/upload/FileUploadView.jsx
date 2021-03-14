@@ -14,8 +14,11 @@ const FileUploadView =
 	view ()
 	{
 		const options = [];
-		const disableControls = UploadModel.state === 'loading' ||
-		                        UploadModel.state === 'uploading';
+
+		const isLoading = UploadModel.state === 'loading';
+		const isUploading = UploadModel.state === 'uploading';
+
+		const disableControls = isLoading || isUploading;
 
 		const { uploadOptions, file } = UploadModel;
 
@@ -44,6 +47,8 @@ const FileUploadView =
 			<div>
 				<div class='block'>
 					<div class='columns is-centered'>
+					{
+						isLoading ? <div class='loading-spinner mt-4 mb-2' /> :
 						<div class='file column is-narrow'>
 							<div class='mb-2'>
 								<small>{file === null ? 'No file selected.' : file.name}</small>
@@ -61,6 +66,7 @@ const FileUploadView =
 								<span class='file-cta'>Choose File</span>
 							</label>
 						</div>
+					}
 					</div>
 
 					<div class='field is-horizontal'>
@@ -88,13 +94,13 @@ const FileUploadView =
 				</div>
 
 				<div>
-					<input
-						class='button is-primary'
-						type='button'
-						value='Upload'
+					<button
+						class={'button is-primary' + (isUploading ? ' is-loading' : '')}
 						onclick={UploadController.onClickUpload}
 						disabled={file === null || UploadModel.state !== 'loaded'}
-					/>
+					>
+						Upload
+					</button>
 				</div>
 			</div>
 		);
