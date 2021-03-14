@@ -4,6 +4,10 @@ import axios from 'axios';
 import AppController from '~/app/AppController.js';
 import UploadModel from '~/upload/UploadModel.js';
 
+import { limits } from '~/cfg/common.config.js';
+
+const maxFileSize = limits.fileSize;
+
 
 const UploadController =
 {
@@ -29,8 +33,22 @@ const UploadController =
 
 	onFileChanged ( event )
 	{
-		UploadModel.file = event.target.files[0];
-		UploadModel.state = 'loaded';
+		let file = event.target.files[0];
+
+		if ( file.size < maxFileSize )
+		{
+			UploadModel.state = 'loaded';
+			UploadModel.error = '';
+		}
+		else
+		{
+			file = null;
+
+			UploadModel.state = 'error';
+			UploadModel.error = 'File size exceeds limit';
+		}
+
+		UploadModel.file = file;
 	},
 
 	onClickUpload ( event )

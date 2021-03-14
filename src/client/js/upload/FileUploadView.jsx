@@ -6,6 +6,8 @@ import UploadController from '~/upload/UploadController.js';
 
 import { limits } from '~/cfg/common.config.js';
 
+const maxFileSize = limits.fileSize;
+
 
 const FileUploadView =
 {
@@ -69,7 +71,20 @@ const FileUploadView =
 						</div>
 					</div>
 
-					<small>Max file size is {filesize (limits.fileSize)}</small>
+					{
+						UploadModel.error === '' ? '' :
+						<div class='columns is-centered mb-0'>
+							<div class='column is-three-fifths'>
+								<div class='message is-danger'>
+									<div class='message-body p-2'>
+										{UploadModel.error}
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+
+					<small>Max file size is {filesize (maxFileSize)}</small>
 				</div>
 
 				<div>
@@ -80,10 +95,6 @@ const FileUploadView =
 						onclick={UploadController.onClickUpload}
 						disabled={file === null || UploadModel.state !== 'loaded'}
 					/>
-				</div>
-
-				<div class='block'>
-					<strong>{UploadModel.error}</strong>
 				</div>
 			</div>
 		);
