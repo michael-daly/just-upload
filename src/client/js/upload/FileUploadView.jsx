@@ -50,11 +50,11 @@ const FileUploadView =
 					isLoading
 						? <div class='loading-spinner mt-4 mb-2' />
 						: <div class='file column is-narrow'>
-							<div class='has-text-centered mb-2'>
+							<div class='has-text-centered mb-5'>
 								<small>{file === null ? 'No file selected.' : file.name}</small>
 							</div>
 
-							<label class='file-label'>
+							<label class='file-label columns is-centered mb-2'>
 								<input
 									class='file-input'
 									type='file'
@@ -62,8 +62,7 @@ const FileUploadView =
 									onchange={UploadController.onFileChanged}
 									disabled={disableControls}
 								/>
-
-								<span class='file-cta'>Choose File</span>
+								<div class='file-cta'>Choose File</div>
 							</label>
 						</div>
 				}
