@@ -18,7 +18,7 @@ const RulesView =
 		}
 
 		return (
-			<div class='block p-2 pb-4'>
+			<div class='block p-1 pb-2'>
 				<h4 class='title is-4 has-text-centered'>Rules</h4>
 
 				<div class='columns is-centered'>

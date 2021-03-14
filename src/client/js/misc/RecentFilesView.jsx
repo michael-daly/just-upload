@@ -18,10 +18,10 @@ const RecentFilesView =
 		const showLoading = AppModel.isLoadingFiles && AppModel.files.length <= 0;
 
 		return (
-			<div>
+			<div class='p-1'>
 				<h4 class='title is-4 has-text-centered'>Recently Upload Files</h4>
 
-				<div>
+				<div class='p-2'>
 					<div class='block columns is-centered'>
 						<div class='column is-full'>
 						{
