@@ -49,7 +49,7 @@ const FileUploadView =
 				{
 					isLoading
 						? <div class='loading-spinner mt-4 mb-2' />
-						: <div class='file column is-narrow'>
+						: <div class='file column'>
 							<div class='has-text-centered mb-5'>
 								<small>{file === null ? 'No file selected.' : file.name}</small>
 							</div>

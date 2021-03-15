@@ -8,14 +8,8 @@
 /* Override Bulma variables */
 
 $body-overflow-y: auto;
+$navbar-breakpoint: 0;
 
-
-/* CSS Styles */
-
-.box.box-primary
-{
-	// TODO
-}
 
 .loading-spinner
 {
@@ -45,6 +39,11 @@ $body-overflow-y: auto;
 .button-transition
 {
 	transition: background-color 300ms;
+}
+
+.recent-files
+{
+	word-break: break-all;
 }
 
 

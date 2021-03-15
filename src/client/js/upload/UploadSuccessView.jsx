@@ -51,9 +51,9 @@ const UploadSuccessView =
 		const self = this;
 
 		return (
-			<div>
-				<div class='columns is-centered pt-2'>
-					<div class='column is-narrow'>
+			<div class='has-text-centered'>
+				<div class='columns is-centered is-multiline pt-2'>
+					<div class='column'>
 						<label>Download Link: </label>
 						<a href={downloadLink}>{window.location.host + downloadLink}</a>
 					</div>
@@ -61,14 +61,14 @@ const UploadSuccessView =
 
 				<hr class='mt-2 ml-6 mr-6' />
 
-				<div class='columns is-centered pb-3'>
+				<div class='columns is-centered is-multiline pb-3'>
 					<div class='column is-narrow'>
 						<button
 							class={'button button-transition ' + (isCopying ? '' : 'is-danger')}
 							onclick={() => self.copyLink (deleteLink)}
 							disabled={isCopying}
 						>
-							{isCopying ? 'Copied' : 'Copy Deletion Link'}
+							{isCopying ? 'Copied Link' : 'Copy Deletion Link'}
 						</button>
 					</div>
 					<div class='column is-narrow'>

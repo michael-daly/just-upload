@@ -18,11 +18,11 @@ const RulesView =
 		}
 
 		return (
-			<div class='block p-1 pb-2'>
+			<div class='p-1 pb-2'>
 				<h4 class='title is-4 has-text-centered'>Rules</h4>
 
 				<div class='columns is-centered'>
-					<div class='column is-narrow'>
+					<div class='p-2'>
 						<ol class='rules-list'>
 							{ruleComponents}
 						</ol>

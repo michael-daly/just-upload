@@ -46,7 +46,7 @@ const FileList =
 		}
 
 		return (
-			<div class='columns is-centered'>
+			<div class='columns is-centered recent-files'>
 				<table class='table'>
 					{rows.length <= 0 ? 'No files to display.' : rows}
 				</table>
