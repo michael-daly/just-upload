@@ -1,6 +1,6 @@
 const sequelize = require ('../../database.js');
 
-const { Sequelize, DataTypes } = require ('Sequelize');
+const { Sequelize, DataTypes } = require ('sequelize');
 
 
 const File = sequelize.define ('File',
