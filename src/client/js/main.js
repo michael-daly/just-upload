@@ -1,41 +1,51 @@
 import 'regenerator-runtime/runtime.js';
+import '~/styles/main.scss';
 
 import m from 'mithril';
 
-import '~/styles/main.scss';
-
 import AppView from '~/app/AppView.jsx';
-import AppModel from '~/app/AppModel.js';
+import UploadView from '~/upload/UploadView.jsx';
+import RulesView from '~/misc/RulesView.jsx';
+import NotFoundView from '~/errorPages/NotFoundView.jsx';
 
 
 m.route.prefix = '';
 
-m.route (document.getElementById ('app-root'), '/',
+m.route (document.getElementById ('app-root'), '/404',
 {
 	'/':
 	{
-		onmatch ()
+		render ()
 		{
-			AppModel.subview = 'home';
-			return AppView;
+			return (
+				<AppView showRecentFiles={true}>
+					<UploadView />
+				</AppView>
+			);
 		},
 	},
 
 	'/rules':
 	{
-		onmatch ()
+		render ()
 		{
-			AppModel.subview = 'rules';
-			return AppView;
+			return (
+				<AppView showRecentFiles={true}>
+					<RulesView />
+				</AppView>
+			);
 		},
 	},
 
 	'/404':
 	{
-		onmatch ()
+		render ()
 		{
-			AppModel.subview = '404';
-			return AppView;
+			return (
+				<AppView showRecentFiles={false}>
+					<NotFoundView />
+				</AppView>
+			);
 		},
 	},
 });

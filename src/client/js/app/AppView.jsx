@@ -1,51 +1,14 @@
 import m from 'mithril';
 
-import AppModel from '~/app/AppModel.js';
-
-import UploadView from '~/upload/UploadView.jsx';
-import RulesView from '~/misc/RulesView.jsx';
-import RecentFilesView from '~/misc/RecentFilesView.jsx';
-import NotFoundView from '~/errorPages/NotFoundView.jsx';
-
 import Navbar from '~/misc/Navbar.jsx';
+import RecentFilesView from '~/misc/RecentFilesView.jsx';
 
 
 const AppView =
 {
-	view ()
+	view ({ attrs, children })
 	{
-		const { subview } = AppModel;
-
-		let viewComponent;
-		let showRecentFiles = true;
-
-		switch ( subview )
-		{
-			case 'home':
-			{
-				viewComponent = <UploadView />;
-				break;
-			}
-
-			case 'rules':
-			{
-				viewComponent = <RulesView />;
-				break;
-			}
-
-			case '404':
-			{
-				viewComponent = <NotFoundView />;
-				showRecentFiles = false;
-				break;
-			}
-
-			default:
-			{
-				viewComponent = `Unknown subview \`${subview}\``;
-				break;
-			}
-		}
+		const { showRecentFiles } = attrs;
 
 		return (
 			<div>
@@ -68,7 +31,7 @@ const AppView =
 					<div class='columns is-centered is-vcentered'>
 						<div class='column is-two-fifths'>
 							<div class='box box-primary'>
-								{viewComponent}
+								{children}
 							</div>
 						</div>
 					</div>
