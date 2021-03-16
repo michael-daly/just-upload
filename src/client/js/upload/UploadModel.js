@@ -21,15 +21,23 @@ const uploadOptions = Object.freeze (
 
 const UploadModel =
 {
-	file: null,
-	options: {},
-	downloadKey: '',
-	deleteKey: '',
-	subview: 'upload',
-	error: '',
-	state: 'ready',
-
 	uploadOptions,
+
+	resetToDefaults ()
+	{
+		UploadModel.file = null;
+		UploadModel.options = {};
+		UploadModel.downloadKey = '';
+		UploadModel.deleteKey = '';
+		UploadModel.subview = 'upload';
+		UploadModel.error = '';
+		UploadModel.state = 'ready';
+
+		for ( let key in uploadOptions )
+		{
+			UploadModel.options[key] = uploadOptions[key].defaultValue;
+		}
+	},
 
 	setOption ( key, value )
 	{
@@ -45,10 +53,7 @@ const UploadModel =
 	},
 };
 
-for ( let key in uploadOptions )
-{
-	UploadModel.options[key] = uploadOptions[key].defaultValue;
-}
+UploadModel.resetToDefaults ();  // Initialize fields
 
 
 export default UploadModel;

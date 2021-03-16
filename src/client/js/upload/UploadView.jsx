@@ -9,6 +9,11 @@ import UploadSuccessView from '~/upload/UploadSuccessView.jsx';
 
 const UploadView =
 {
+	oninit()
+	{
+		UploadModel.resetToDefaults ();
+	},
+
 	view ()
 	{
 		const { subview } = UploadModel;
