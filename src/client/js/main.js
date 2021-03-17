@@ -4,7 +4,8 @@ import '~/styles/main.scss';
 import m from 'mithril';
 
 import AppView from '~/app/AppView.jsx';
-import UploadView from '~/upload/UploadView.jsx';
+import UploadFileView from '~/upload/UploadFileView.jsx';
+import UploadSuccessView from '~/upload/UploadSuccessView.jsx';
 import RulesView from '~/misc/RulesView.jsx';
 import NotFoundView from '~/errorPages/NotFoundView.jsx';
 
@@ -19,7 +20,19 @@ m.route (document.getElementById ('app-root'), '/404',
 		{
 			return (
 				<AppView showRecentFiles={true}>
-					<UploadView />
+					<UploadFileView />
+				</AppView>
+			);
+		},
+	},
+
+	'/success':
+	{
+		render ()
+		{
+			return (
+				<AppView showRecentFiles={true}>
+					<UploadSuccessView />
 				</AppView>
 			);
 		},

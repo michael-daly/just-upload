@@ -30,9 +30,9 @@ const UploadSuccessView =
 		}
 	},
 
-	view ( component )
+	view ()
 	{
-		const { downloadKey = null, deleteKey = null } = component.attrs;
+		const { downloadKey = null, deleteKey = null } = UploadModel;
 
 		let downloadLink = '';
 		let deleteLink = '';
@@ -74,7 +74,7 @@ const UploadSuccessView =
 					<div class='column is-narrow'>
 						<button
 							class='button is-primary'
-							onclick={() => UploadModel.subview = 'upload'}
+							onclick={() => m.route.set ('/')}
 						>
 							Upload Another File
 						</button>

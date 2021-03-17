@@ -70,11 +70,12 @@ const UploadController =
 			const { data } = response;
 
 			UploadModel.state = 'success';
-			UploadModel.subview = 'success';
 			UploadModel.downloadKey = data.downloadKey;
 			UploadModel.deleteKey = data.deleteKey;
 
 			AppController.getRecentFiles ();
+
+			m.route.set ('/success');
 		})
 		.catch (error =>
 		{

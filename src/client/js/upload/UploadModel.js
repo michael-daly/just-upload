@@ -29,7 +29,6 @@ const UploadModel =
 		UploadModel.options = {};
 		UploadModel.downloadKey = '';
 		UploadModel.deleteKey = '';
-		UploadModel.subview = 'upload';
 		UploadModel.error = '';
 		UploadModel.state = 'ready';
 

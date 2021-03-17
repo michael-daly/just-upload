@@ -9,8 +9,13 @@ import { limits } from '~/cfg/common.config.js';
 const maxFileSize = limits.fileSize;
 
 
-const FileUploadView =
+const UploadFileView =
 {
+	oninit ()
+	{
+		UploadModel.resetToDefaults ();
+	},
+
 	view ()
 	{
 		const options = [];
@@ -44,7 +49,8 @@ const FileUploadView =
 		}
 
 		return (
-			<div>
+			<div class='p-1'>
+				<h4 class='title is-4 has-text-centered'>Upload File</h4>
 				<div class='columns is-centered'>
 				{
 					isLoading
@@ -109,4 +115,4 @@ const FileUploadView =
 };
 
 
-export default FileUploadView;
+export default UploadFileView;
